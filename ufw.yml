@@ -25,11 +25,12 @@
   - name: Restart ufw
     ufw:
       state: disabled
+  - name: Enable ufw
+    ufw:
+      state: enabled
   - name: restart sshd
     service: 
       name: sshd
       state: restarted
-  - name: Enable ufw
-    ufw:
-      state: enabled
+
 
