@@ -1,0 +1,16 @@
+- name: Docker build
+  hosts: all
+
+  tasks:
+  - name: Create dir 
+    file: 
+      state: directory 
+      path: "/sillcloud-ngsite"
+
+  - name: Files
+    copy: 
+      src: "{{ item }}"
+      dest: /skillcloud-ngsite/
+    loop: 
+    - index.html
+    - balance.conf 

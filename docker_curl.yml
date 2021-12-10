@@ -1,0 +1,38 @@
+- name: Docker and curl
+  hosts: all
+
+  tasks:
+    - name: Install curl and update cache
+      apt:
+        name: curl
+        state: present
+        update_cache: yes
+    - name: add gpg keys
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+    - name: add repo
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+        state: present
+    - name: install docker
+      apt:
+        name: docker-ce
+        state: present
+    - name: enable and start docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: download docker-compose
+      uri:
+        url: "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-linux-x86_64"
+        dest: "/usr/local/bin/docker-compose"
+    - name: +x for docker-compose
+      file:
+        path: "/usr/local/bin/docker-compose"
+        owner: root
+        group: root
+        mode: "0770"
+

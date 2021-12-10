@@ -1,0 +1,34 @@
+- name: Firewall
+  hosts: all
+
+
+  tasks: 
+  - name: Allow 1467 port
+    ufw:
+      rule: allow
+      port: "1467"
+      proto: tcp
+  - name: Allow 80 port
+    ufw:
+      rule: allow
+      port: "80"
+      proto: tcp
+  - name: Allow 8888 port
+    ufw:
+      rule: allow
+      port: "8888"
+      proto: tcp
+  - name: Create Redirect 
+    copy:
+      src: ./before.rules
+      dest: /etc/ufw/before.rules
+  - name: Enable ufw
+    ufw:
+      state: enabled
+  - name: Restart ufw
+    ufw:
+      state: disabled 
+  - name: Restart ufw
+    ufw:
+      state: enabled
+
