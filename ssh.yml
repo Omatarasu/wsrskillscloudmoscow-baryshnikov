@@ -13,4 +13,4 @@
       enabled: yes
   - name: Restart service
     service:
-     state: restarted
+      state: restarted
