@@ -1,6 +1,7 @@
 - name: Restart
   hosts: all
-
+  vars: 
+    ansible_port: "1467"
   tasks: 
   - name: reboot
     reboot: 
