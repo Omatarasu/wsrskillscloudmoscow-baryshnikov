@@ -4,4 +4,5 @@
 3. docker_curl.yml
 4. users.yml
 6. build.yml
+7. restart.yml
 ```
