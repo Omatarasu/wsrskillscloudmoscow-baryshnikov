@@ -22,13 +22,14 @@
     copy:
       src: ./before.rules
       dest: /etc/ufw/before.rules
+  - name: Restart ufw
+    ufw:
+      state: disabled
+  - name: restart sshd
+    service: 
+      name: sshd
+      state: restarted
   - name: Enable ufw
-    ufw:
-      state: enabled
-  - name: Restart ufw
-    ufw:
-      state: disabled 
-  - name: Restart ufw
     ufw:
       state: enabled
 
