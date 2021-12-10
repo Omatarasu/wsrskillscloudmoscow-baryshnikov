@@ -1,6 +1,8 @@
 - name: Firewall
   hosts: all
-
+  
+  vars: 
+    ansible_port: "1467"
 
   tasks: 
   - name: Allow 1467 port
