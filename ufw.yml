@@ -18,19 +18,11 @@
       rule: allow
       port: "8888"
       proto: tcp
-  - name: Create Redirect 
-    copy:
-      src: ./before.rules
-      dest: /etc/ufw/before.rules
   - name: Restart ufw
     ufw:
       state: disabled
   - name: Enable ufw
     ufw:
       state: enabled
-  - name: restart sshd
-    service: 
-      name: sshd
-      state: restarted
 
 
