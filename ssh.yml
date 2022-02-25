@@ -13,4 +13,5 @@
       enabled: yes
   - name: Restart service
     service:
+      name: sshd
       state: restarted
